@@ -3,78 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yachaypaq Inti - Reina Inca Chinchana</title>
+    <title>Conoce la historia de la Reina Inca Chinchana | Yachaypaq Inti</title>
     <style>
-        /* Colores inspirados en el Inti y la cultura Chincha/Inca */
+        /* Estilos inspirados en la plantilla móvil y de escritorio de Blogger */
         :root {
-            --oro: #D4AF37;
-            --oro-oscuro: #AA7C11;
-            --terracota: #8B4513;
-            --oscuro: #1A1A1A;
-            --claro: #F5F5DC;
+            --primary-color: #D4AF37; /* Oro Inti */
+            --accent-color: #8B4513; /* Terracota */
+            --bg-body: #f7f9fa;
+            --bg-card: #ffffff;
+            --text-main: #2c3e50;
+            --text-muted: #7f8c8d;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--claro);
-            color: var(--oscuro);
-            margin: 0;
-            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
             line-height: 1.6;
+            padding-bottom: 40px;
         }
 
+        /* Barra de Navegación Superior / Header de Blogger */
         header {
-            background-color: var(--oscuro);
-            border-bottom: 5px solid var(--oro);
-            color: var(--oro);
-            text-align: center;
-            padding: 2rem;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-bottom: 3px solid var(--primary-color);
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 2px;
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        header p {
-            color: #fff;
-            font-style: italic;
-            margin: 0.5rem 0 0 0;
+        .logo h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--primary-color);
         }
 
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
+        .logo p {
+            font-size: 0.75rem;
+            color: #ccc;
+            text-transform: uppercase;
         }
 
-        section {
-            background: #fff;
-            padding: 2rem;
+        /* Contenedor Principal de la Entrada (Post Container) */
+        .main-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .post-card {
+            background-color: var(--bg-card);
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            padding: 25px;
         }
 
-        h2 {
-            color: var(--terracota);
-            border-bottom: 2px solid var(--oro);
-            padding-bottom: 0.5rem;
+        /* Datos de la publicación (Metadata) */
+        .post-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
-        /* Contenedor responsivo para el Video */
-        .video-container {
+        .post-category {
+            color: var(--accent-color);
+        }
+
+        .post-title {
+            font-size: 1.8rem;
+            line-height: 1.3;
+            color: #111;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        /* Cuerpo del Artículo */
+        .post-body {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .post-body p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Contenedor del Video Adaptable (Responsivo) */
+        .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+            padding-bottom: 56.25%; /* Proporción 16:9 */
             height: 0;
             overflow: hidden;
-            margin-top: 1.5rem;
+            margin: 25px 0;
             border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            background-color: #000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
-        .video-container iframe {
+        .video-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -83,133 +135,222 @@
             border: 0;
         }
 
-        /* Sistema de Comentarios */
-        .comment-form textarea {
+        /* Zona de Comentarios estilo Blogger */
+        .comments-section {
+            margin-top: 35px;
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+        }
+
+        .comments-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            color: #111;
+        }
+
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .comment-form input, .comment-form textarea {
             width: 100%;
+            font-family: inherit;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .comment-form input:focus, .comment-form textarea:focus {
+            border-color: var(--primary-color);
+        }
+
+        .comment-form textarea {
             height: 100px;
-            padding: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
             resize: vertical;
-            box-sizing: border-box;
-            margin-bottom: 1rem;
         }
 
         .comment-form button {
-            background-color: var(--terracota);
+            align-self: flex-start;
+            background-color: #1a1a1a;
             color: white;
             border: none;
-            padding: 0.7rem 1.5rem;
-            font-size: 1rem;
-            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 6px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.2s;
         }
 
         .comment-form button:hover {
-            background-color: var(--oscuro);
-            color: var(--oro);
+            background-color: var(--accent-color);
         }
 
+        /* Lista de Comentarios Publicados */
         .comments-list {
-            margin-top: 2rem;
-            border-top: 1px solid #eee;
-            padding-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        .comment-item {
-            background: #f9f9f9;
-            padding: 1rem;
-            border-left: 4px solid var(--oro);
-            margin-bottom: 1rem;
-            border-radius: 0 4px 4px 0;
+        .comment-card {
+            background-color: #f8fafc;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 6px;
+            display: flex;
+            gap: 12px;
         }
 
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .comment-content {
+            flex-grow: 1;
+        }
+
+        .comment-author {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 4px;
+        }
+
+        .comment-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-left: 8px;
+            font-weight: normal;
+        }
+
+        .comment-text {
+            font-size: 0.95rem;
+            color: #334155;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 1.5rem;
-            background-color: var(--oscuro);
-            color: #fff;
-            font-size: 0.9rem;
-            margin-top: 4rem;
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>YACHAYPAQ INTI</h1>
-        <p>El Sol del saber - Historia de la Reina Inca Chinchana</p>
+        <div class="header-container">
+            <div class="logo">
+                <h1>YACHAYPAQ INTI</h1>
+                <p>El Sol del Saber</p>
+            </div>
+        </div>
     </header>
 
-    <div class="container">
+    <div class="main-container">
         
-        <!-- Sección Informativa -->
-        <section>
-            <h2>La Reina Inca Chinchana</h2>
-            <p>Bienvenidos a <strong>Yachaypaq Inti</strong>. Este espacio está dedicado a la investigación, rescate y difusión de la memoria histórica de la Reina Chinchana, una figura clave en el misticismo y la fusión cultural entre los señoríos de la cultura Chincha y el Imperio Incaico.</p>
-            <p>A través de las crónicas y la tradición oral, exploramos su impacto en la identidad regional, sus leyendas y la riqueza arqueológica que dejó su legado.</p>
-        </section>
-
-        <!-- Sección Multimedia (Videos) -->
-        <section>
-            <h2>Yachay Multimedia</h2>
-            <p>Disfruta de nuestra última producción audiovisual sobre el origen y mitos de la Reina Chinchana.</p>
-            
-            <div class="video-container">
-                <!-- REEMPLAZA EL ENLACE DE ABAJO POR TU VIDEO DE YOUTUBE (Usa la opción "Incrustar/Embed") -->
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video de la Reina Chinchana" allowfullscreen></iframe>
+        <article class="post-card">
+            <div class="post-meta">
+                <span class="post-category">Historia e Identidad</span>
+                <span>•</span>
+                <span>Julio 2026</span>
             </div>
-        </section>
+            
+            <h2 class="post-title">Conoce sobre la Reina Inca Chinchana: Historia, misticismo y el gran legado cultural</h2>
+            
+            <div class="post-body">
+                <p>La historia de nuestro pasado nos sorprende constantemente con personajes llenos de poder y misticismo. Así como en la paleontología de nuestra costa sur descubrimos asombrosos gigantes antiguos, la historia prehispánica de la región alberga la imponente memoria de la <strong>Reina Inca Chinchana</strong>.</p>
+                
+                <p>Esta figura representa la alianza política, económica y mística entre el próspero e influyente Señorío de Chincha y el expansivo Imperio Incaico. A través de las crónicas locales y la tradición oral que perdura hasta nuestros días, se recuerda su impacto en la identidad regional y el profundo respeto que inspiraba.</p>
+                
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Informativo Reina Inca Chinchana" allowfullscreen></iframe>
+                </div>
 
-        <!-- Sección de Comentarios -->
-        <section>
-            <h2>Rimayku (Comentarios de la Comunidad)</h2>
-            <p>Déjanos tu opinión o aporta nuevos datos sobre esta historia:</p>
+                <p>El propósito de este espacio informativo en <strong>Yachaypaq Inti</strong> es rescatar y poner en valor estos relatos para que las nuevas generaciones conozcan la riqueza histórica que se tejió bajo nuestro sol. Los vestigios arqueológicos y las leyendas urbanas locales nos invitan a seguir investigando sobre su corte, sus costumbres y su rol en el antiguo Perú.</p>
+            </div>
+        </article>
+
+        <section class="comments-section">
+            <h3 class="comments-title">Comentarios</h3>
             
             <div class="comment-form">
-                <textarea id="commentInput" placeholder="Escribe tu comentario aquí de manera respetuosa..."></textarea>
-                <button onclick="addComment()">Publicar Comentario</button>
+                <input type="text" id="authorInput" placeholder="Tu Nombre o Pseudónimo" required>
+                <textarea id="commentTextarea" placeholder="Introduce tu comentario..." required></textarea>
+                <button onclick="publicarComentario()">Publicar comentario</button>
             </div>
 
-            <div class="comments-list" id="commentsList">
-                <!-- Los comentarios aparecerán aquí dinámicamente -->
-                <div class="comment-item">
-                    <strong>Ejemplo de Visitante:</strong> Excelente iniciativa para recuperar la historia de nuestra región. ¡Esperamos más videos!
+            <div class="comments-list" id="boxComentarios">
+                <div class="comment-card">
+                    <div class="avatar">A</div>
+                    <div class="comment-content">
+                        <div class="comment-author">Alejandro M. <span class="comment-date">Hace un momento</span></div>
+                        <div class="comment-text">Excelente artículo e iniciativa. Hacía falta un espacio digital dedicado exclusivamente a difundir la historia de la Reina Chinchana. ¡Espero el próximo video!</div>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <footer>
+            <p>Con la tecnología de Yachaypaq Inti © 2026</p>
+        </footer>
     </div>
 
-    <footer>
-        &copy; 2026 Yachaypaq Inti - Todos los derechos reservados.
-    </footer>
-
-    <!-- Lógica en JavaScript para simular los comentarios -->
     <script>
-        function addComment() {
-            const commentText = document.getElementById('commentInput').value.trim();
+        function publicarComentario() {
+            const nombre = document.getElementById('authorInput').value.trim();
+            const texto = document.getElementById('commentTextarea').value.trim();
             
-            if (commentText === "") {
-                alert("Por favor, escribe un comentario antes de publicar.");
+            if (nombre === "" || texto === "") {
+                alert("Por favor, rellena ambos campos para publicar tu comentario.");
                 return;
             }
 
-            const commentsList = document.getElementById('commentsList');
+            const contenedor = document.getElementById('boxComentarios');
             
-            // Crear el nuevo elemento de comentario
-            const newComment = document.createElement('div');
-            newComment.className = 'comment-item';
-            newComment.innerHTML = `<strong>Visitante Anónimo:</strong> ${commentText}`;
-            
-            // Agregar el comentario al inicio de la lista
-            commentsList.insertBefore(newComment, commentsList.firstChild);
-            
-            // Limpiar el campo de texto
-            document.getElementById('commentInput').value = "";
+            // Obtener la primera letra del nombre para el Avatar
+            const primeraLetra = nombre.charAt(0).toUpperCase();
+
+            // Crear la estructura de la tarjeta de comentario
+            const nuevaTarjeta = document.createElement('div');
+            nuevaTarjeta.className = 'comment-card';
+            nuevaTarjeta.innerHTML = `
+                <div class="avatar" style="background-color: #8B4513;">${primeraLetra}</div>
+                <div class="comment-content">
+                    <div class="comment-author">${nombre} <span class="comment-date">Justo ahora</span></div>
+                    <div class="comment-text">${texto}</div>
+                </div>
+            `;
+
+            // Insertarlo arriba de la lista (como hace Blogger)
+            contenedor.insertBefore(nuevaTarjeta, contenedor.firstChild);
+
+            // Limpiar inputs
+            document.getElementById('authorInput').value = "";
+            document.getElementById('commentTextarea').value = "";
         }
     </script>
-
 </body>
 </html>
